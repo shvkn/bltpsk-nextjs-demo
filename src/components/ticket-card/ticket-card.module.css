@@ -1,0 +1,39 @@
+.ticketCard {
+    display: flex;
+    align-items: flex-start;
+    padding: 24px;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    gap: 24px;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 8px;
+}
+.title {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: var(--font-roboto);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.genre {
+    color: var(--text-primary);
+    font-family: var(--font-roboto);
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.25;
+}
+
+.image {
+    height: 120px;
+    max-width: 100px;
+    min-width: 100px;
+    min-height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+}
