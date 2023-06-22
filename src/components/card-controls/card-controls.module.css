@@ -1,30 +1,30 @@
 .controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
 }
 
 .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20px;
-    height: 20px;
-    background-color: var(--color-orange);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-orange);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .button:disabled {
-    background-color: var(--color-orange-disabled);
+  background-color: var(--color-orange-disabled);
 }
 
 .count {
-    color: var(--color-text-primary);
-    font-family: var(--font-roboto);
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1;
+  color: var(--color-text-primary);
+  font-family: var(--font-roboto);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
 }
