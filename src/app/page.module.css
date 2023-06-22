@@ -1,1 +1,30 @@
-.main {}
+.root {
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    min-height: 100vh;
+    /*position: relative;*/
+}
+
+.mainContainer {
+    display: grid;
+    grid-template-areas: ". . . . ." ". sidebar . main ." ". . . . .";
+    grid-template-columns: 32px auto 23px auto 32px;
+    grid-template-rows: 24px 1fr 24px;
+    /*position: relative;*/
+}
+.main {
+    grid-area: main;
+}
+.sidebar {
+
+    grid-area: sidebar;
+    width: 408px;
+    /*min-width: 408px;*/
+    background-color: #FF5500;
+}
+
+.sticky {
+    position: sticky;
+    top: 100px;
+}
