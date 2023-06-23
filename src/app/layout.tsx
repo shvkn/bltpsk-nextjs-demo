@@ -52,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <StoreProvider>{children}</StoreProvider>
         <Footer />
+        <div id='dropdown'></div>
       </body>
     </html>
   );

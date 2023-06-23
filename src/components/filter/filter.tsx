@@ -29,9 +29,9 @@ const Filter = () => {
 
   return (
     <div className={styles.filter}>
-      <Input name='name' label='Название' placeholder='Введите название' onChange={handleChange} />
-      <Input name='genre' label='Жанр' placeholder='Выберите жанр' onChange={handleChange} />
-      <Input name='cinema' label='Кинотеатр' placeholder='Выберите кинотеатр' onChange={handleChange} />
+      <Input name='name' type='text' label='Название' placeholder='Введите название' onChange={handleChange} />
+      <Input name='genre' type='dropdown' label='Жанр' placeholder='Выберите жанр' onChange={handleChange} />
+      <Input name='cinema' type='dropdown' label='Кинотеатр' placeholder='Выберите кинотеатр' onChange={handleChange} />
     </div>
   );
 };
