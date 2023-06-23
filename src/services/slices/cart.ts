@@ -25,6 +25,12 @@ const cartSlice = createSlice({
       }
       state.cart[action.payload] = count - 1;
     },
+    remove: (state, action) => {
+      const id = action.payload;
+      if (id && id in state.cart) {
+        delete state.cart[id];
+      }
+    },
   },
 });
 export const { actions: cartSliceActions } = cartSlice;

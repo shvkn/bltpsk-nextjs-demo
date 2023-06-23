@@ -37,3 +37,9 @@
     border-radius: 8px;
     overflow: hidden;
 }
+
+.removeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
