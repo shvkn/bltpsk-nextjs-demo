@@ -12,10 +12,6 @@ export default function Home() {
       <main className={styles.mainContainer}>
         <aside className={styles.sidebar}>
           <Sticky>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, fuga fugit impedit ipsa ipsum iusto natus
-              nisi non ratione vel?
-            </p>
             <Filter />
           </Sticky>
         </aside>

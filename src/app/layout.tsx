@@ -5,11 +5,39 @@ import './globals.css';
 import { StoreProvider } from '@/services/store-provider';
 import Header from '@/components/header/header';
 import Footer from '@/components/footer/footer';
+import classNames from 'classnames';
+import localFont from 'next/font/local';
 
 const roboto = Roboto({
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '700'],
   variable: '--font-roboto',
+});
+
+const sfProText = localFont({
+  src: [
+    {
+      path: '../fonts/SFProText-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/SFProText-RegularItalic.ttf',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/SFProText-Medium.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/SFProText-Semibold.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-sf-pro-text',
 });
 
 export const metadata = {
@@ -19,7 +47,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en' className={roboto.variable}>
+    <html lang='en' className={classNames(roboto.variable, sfProText.variable)}>
       <body>
         <Header />
         <StoreProvider>{children}</StoreProvider>

@@ -5,6 +5,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 
 import styles from './filter.module.css';
+import { Input } from '@/components/input/input';
 
 const Filter = () => {
   const router = useRouter();
@@ -22,13 +23,15 @@ const Filter = () => {
   );
 
   const handleChange = (e: SyntheticEvent) => {
-    const { value } = e.target as HTMLInputElement;
-    router.push(pathname + '?' + createQueryString('name', value));
+    const { value, name } = e.target as HTMLInputElement;
+    router.push(pathname + '?' + createQueryString(name, value));
   };
 
   return (
     <div className={styles.filter}>
-      <input type='text' onChange={handleChange} />
+      <Input name='name' label='Название' placeholder='Введите название' onChange={handleChange} />
+      <Input name='genre' label='Жанр' placeholder='Выберите жанр' onChange={handleChange} />
+      <Input name='cinema' label='Кинотеатр' placeholder='Выберите кинотеатр' onChange={handleChange} />
     </div>
   );
 };
