@@ -4,7 +4,7 @@ import React from 'react';
 
 import styles from './ticket-card.module.css';
 import Image from 'next/image';
-import CardControls from '../card-controls/card-controls';
+import Counter from '@/components/counter/counter';
 import classNames from 'classnames';
 
 export interface ITicketCard {
@@ -26,7 +26,7 @@ const TicketCard: React.FC<ITicketCard> = ({ movie }) => {
         </a>
         <div className={styles.genre}>{movie.genre}</div>
       </div>
-      <CardControls />
+      <Counter id={movie.id} />
     </div>
   );
 };
