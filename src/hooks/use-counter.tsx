@@ -1,19 +1,19 @@
 import { useCallback } from 'react';
 
-import { selectCountById } from '@/services/selectors/card';
+import { selectCountById } from '@/services/selectors/cart';
 import { useAppDispatch, useAppSelector } from '@/services/store';
-import { cardSliceActions } from '@/services/slices/card';
+import { cartSliceActions } from '@/services/slices/cart';
 
 export const useCounter = ({ id }: { id: string }) => {
   const count = useAppSelector(selectCountById(id));
   const dispatch = useAppDispatch();
 
   const increment = useCallback(() => {
-    dispatch(cardSliceActions.increment(id));
+    dispatch(cartSliceActions.increment(id));
   }, [dispatch, id]);
 
   const decrement = useCallback(() => {
-    dispatch(cardSliceActions.decrement(id));
+    dispatch(cartSliceActions.decrement(id));
   }, [dispatch, id]);
 
   return { increment, decrement, count };
