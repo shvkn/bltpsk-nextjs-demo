@@ -12,3 +12,10 @@ declare interface IMove {
 
 declare type TRootState = ReturnType<typeof import('@/services/store').store.getState>;
 declare type AppDispatch = typeof import('@/services/store').store.dispatch;
+
+declare interface IReview {
+  id: string;
+  name: string;
+  text: string;
+  rating: string;
+}
