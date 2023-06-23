@@ -6,10 +6,12 @@ import { createPortal } from 'react-dom';
 export const DropDownList = ({
   items,
   ownerRef,
+  handleClose,
 }: /*setValue,*/
 {
   items: { value: string; id: string }[];
   ownerRef: React.RefObject<HTMLInputElement>;
+  handleClose: () => void;
   /*setValue: (item: { value: string; id: string }) => void;*/
 }) => {
   const [container, setContainer] = useState<Element>();
@@ -34,8 +36,12 @@ export const DropDownList = ({
     const value = target.dataset['value'];
     const id = target.dataset['id'];
 
-    if (id && value) {
+    if (id && value && ownerRef.current) {
       // setValue({ value, id });
+      ownerRef.current.value = value;
+      handleClose();
+      let event = new Event('input', { bubbles: true });
+      ownerRef.current.dispatchEvent(event);
     }
   };
   const jsx = (
@@ -45,7 +51,7 @@ export const DropDownList = ({
           <li
             key={i.id}
             className={classNames(styles.ddListItem, 'hover')}
-            data-Id={i.id}
+            data-id={i.id}
             data-value={i.value}
             onClick={handleClick}
           >
