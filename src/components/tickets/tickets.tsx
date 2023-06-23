@@ -40,7 +40,7 @@ const Tickets: React.FC = () => {
       {movies?.map((item) => {
         return (
           <li key={item.id}>
-            <TicketCard movie={item} />
+            <TicketCard id={item.id} />
           </li>
         );
       })}

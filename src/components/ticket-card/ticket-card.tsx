@@ -6,15 +6,19 @@ import styles from './ticket-card.module.css';
 import Image from 'next/image';
 import Counter from '@/components/counter/counter';
 import classNames from 'classnames';
+import { useGetMovieByIdQuery } from '@/services/movies-api';
 
 export interface ITicketCard {
-  movie: IMove;
+  id: string;
 }
 
-const TicketCard: React.FC<ITicketCard> = ({ movie }) => {
+const TicketCard: React.FC<ITicketCard> = ({ id }) => {
+  const { error, isLoading, data: movie } = useGetMovieByIdQuery(id);
+
   if (!movie) {
     return null;
   }
+
   return (
     <div className={styles.ticketCard}>
       <div className={styles.image}>
