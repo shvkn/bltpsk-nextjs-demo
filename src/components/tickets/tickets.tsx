@@ -1,17 +1,20 @@
+'use client';
+
 import React from 'react';
 
 import TicketCard from '@/components/ticket-card/ticket-card';
+import { useGetMoviesQuery } from '@/services/movies-api';
 
 import styles from './tickets.module.css';
 
-interface ITickets {
-  items: IMove[];
-}
-
-const Tickets: React.FC<ITickets> = ({ items }) => {
+const Tickets: React.FC = () => {
+  const { error, isLoading, data: movies } = useGetMoviesQuery();
+  if (isLoading || movies?.length === 0) {
+    return null;
+  }
   return (
     <ul className={styles.movies}>
-      {items.map((item) => {
+      {movies?.map((item) => {
         return (
           <li key={item.id}>
             <TicketCard movie={item} />

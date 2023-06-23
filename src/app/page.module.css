@@ -1,26 +1,25 @@
 .root {
-    display: flex;
-    z-index: 1;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  z-index: 1;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .mainContainer {
-    display: grid;
-    grid-template-areas: ". . . . ." ". sidebar . main ." ". . . . .";
-    grid-template-columns: 32px 408px 23px auto 32px;
-    grid-template-rows: 24px 1fr 24px;
+  display: grid;
+  grid-template-areas: ". . . . ." ". sidebar . main ." ". . . . .";
+  grid-template-columns: 32px 408px 23px auto 32px;
+  grid-template-rows: 24px 1fr 24px;
+  flex-grow: 1;
 }
+
 .main {
-    grid-area: main;
+  grid-area: main;
 }
+
 .sidebar {
-
-    grid-area: sidebar;
-    background-color: #FF5500;
-}
-
-.sticky {
-    position: sticky;
-    top: 100px;
+  grid-area: sidebar;
+  padding: 24px;
+  background-color: var(--color-white);
+  border-radius: 8px;
 }

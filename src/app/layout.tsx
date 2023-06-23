@@ -2,6 +2,9 @@ import React from 'react';
 import { Roboto } from 'next/font/google';
 
 import './globals.css';
+import { StoreProvider } from '@/services/store-provider';
+import Header from '@/components/header/header';
+import Footer from '@/components/footer/footer';
 
 const roboto = Roboto({
   subsets: ['latin', 'cyrillic'],
@@ -17,7 +20,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' className={roboto.variable}>
-      <body>{children}</body>
+      <body>
+        <Header />
+        <StoreProvider>{children}</StoreProvider>
+        <Footer />
+      </body>
     </html>
   );
 }

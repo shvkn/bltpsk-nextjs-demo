@@ -1,32 +1,28 @@
-import Image from 'next/image';
-
 import React from 'react';
-import Header from '@/components/header/header';
-import Footer from '@/components/footer/footer';
-import Tickets from '@/components/tickets/tickets';
 
-import { movies } from '@/components/ticket-card/mock';
+import Tickets from '@/components/tickets/tickets';
+import Filter from '@/components/filter/filter';
+import { Sticky } from '@/components/sticky/sticky';
 
 import styles from './page.module.css';
 
 export default function Home() {
   return (
     <div className={styles.root}>
-      <Header />
       <main className={styles.mainContainer}>
         <aside className={styles.sidebar}>
-          <div className={styles.sticky}>
+          <Sticky>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, fuga fugit impedit ipsa ipsum iusto natus
               nisi non ratione vel?
             </p>
-          </div>
+            <Filter />
+          </Sticky>
         </aside>
         <div className={styles.main}>
-          <Tickets items={movies} />
+          <Tickets />
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

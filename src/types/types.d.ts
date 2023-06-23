@@ -9,3 +9,6 @@ declare interface IMove {
   director: string;
   reviewIds: string[];
 }
+
+declare type TRootState = ReturnType<typeof import('@/services/store').store.getState>;
+declare type AppDispatch = typeof import('@/services/store').store.dispatch;
