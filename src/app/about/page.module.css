@@ -1,0 +1,26 @@
+.container {
+  padding: 24px 32px;
+  flex-grow: 1;
+}
+
+.article {
+  padding: 24px;
+  background-color: var(--color-white);
+  border-radius: 8px;
+}
+.heading {
+  color: var(--color-text-primary);
+  font-family: var(--font-roboto);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.text {
+  padding: 0;
+  margin: 16px 0 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-roboto);
+  font-size: 16px;
+  line-height: 1.5;
+}
