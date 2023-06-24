@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px;
+}
+
+.heading {
+  padding: 24px;
+  margin: 0;
+  background-color: var(--color-white);
+  border-radius: 8px;
+
+  color: var(--color-text-primary);
+  font-family: var(--font-roboto);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.questions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 16px;
+}
+
+
