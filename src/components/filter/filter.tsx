@@ -7,6 +7,10 @@ import { useRouter } from 'next/navigation';
 import styles from './filter.module.css';
 import { Input } from '@/components/input/input';
 import { log } from 'util';
+import { Select } from '@/components/select/select';
+import { useAppSelector } from '@/services/store';
+import { selectCinemas } from '@/services/selectors/movies';
+import { Translations } from '@/shared/constants';
 
 interface IFilterParameters {
   title: string;
@@ -14,10 +18,26 @@ interface IFilterParameters {
   cinema: string;
 }
 
+const genres = [
+  { value: Translations.Genres['comedy'], id: 'comedy' },
+  { value: Translations.Genres['horror'], id: 'horror' },
+  { value: Translations.Genres['action'], id: 'action' },
+  { value: Translations.Genres['fantasy'], id: 'fantasy' },
+];
+
 const Filter = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams()!;
+  const cinemas = useAppSelector(selectCinemas);
+
+  const cinemasOptions =
+    cinemas.data?.map((cinema) => {
+      return {
+        id: cinema.id,
+        value: cinema.name,
+      };
+    }) || [];
 
   const [filter, setFilter] = useState<IFilterParameters>({ title: '', genre: '', cinema: '' });
 
@@ -30,7 +50,7 @@ const Filter = () => {
       }
     }
     router.push(pathname + '?' + params.toString());
-  }, [filter.title, filter.cinema, filter.genre, router, pathname]);
+  }, [filter.title, filter.cinema, filter.genre, router, pathname, searchParams, filter]);
 
   const handleChange = (e: SyntheticEvent) => {
     const { value, name } = e.target as HTMLInputElement;
@@ -47,23 +67,21 @@ const Filter = () => {
         placeholder='Введите название'
         onChange={handleChange}
       />
-      <Input
+      <Select
         name='genre'
-        value={filter.genre}
-        type='dropdown'
         label='Жанр'
         placeholder='Выберите жанр'
         onChange={handleChange}
         onInput={handleChange}
+        items={genres}
       />
-      <Input
+      <Select
         name='cinema'
-        value={filter.cinema}
-        type='dropdown'
         label='Кинотеатр'
         placeholder='Выберите кинотеатр'
         onChange={handleChange}
         onInput={handleChange}
+        items={cinemasOptions}
       />
     </div>
   );

@@ -19,3 +19,9 @@ declare interface IReview {
   text: string;
   rating: string;
 }
+
+declare interface ICinema {
+  id: string;
+  name: string;
+  movieIds: string[];
+}

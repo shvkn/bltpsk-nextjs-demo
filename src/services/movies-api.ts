@@ -14,9 +14,13 @@ export const moviesApi = createApi({
       query: (id: string) => `movie?movieId=${id}`,
     }),
     getReviewsById: builder.query<IReview[], string>({
-      query: (id: string) => `reviews?movieId=${id}`
+      query: (id: string) => `reviews?movieId=${id}`,
+    }),
+    getCinemas: builder.query<ICinema[], void>({
+      query: () => 'cinemas',
     }),
   }),
 });
 
-export const { useGetMoviesQuery, useGetMoviesByCinemaIdQuery, useGetMovieByIdQuery, useGetReviewsByIdQuery } = moviesApi;
+export const { useGetCinemasQuery, useGetMoviesQuery, useGetMoviesByCinemaIdQuery, useGetMovieByIdQuery, useGetReviewsByIdQuery } =
+  moviesApi;

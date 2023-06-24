@@ -3,17 +3,14 @@
 import React, { useEffect, useState } from 'react';
 
 import TicketCard from '@/components/ticket-card/ticket-card';
-import { useGetMoviesByCinemaIdQuery } from '@/services/movies-api';
+import { useGetCinemasQuery, useGetMoviesByCinemaIdQuery } from '@/services/movies-api';
 
 import styles from './tickets.module.css';
 import { useSearchParams } from 'next/navigation';
 
-// const Tickets: React.FC<{
-//   searchQueryString: { title?: string; genre?: string; cinemaId?: string };
-// }> = ({ searchQueryString }) => {
 const Tickets: React.FC = () => {
   const s = useSearchParams();
-
+  useGetCinemasQuery();
   const cinemaId = s.get('cinema');
   const name = s.get('title');
   const genre = s.get('genre');
