@@ -6,48 +6,41 @@ import { useRouter } from 'next/navigation';
 
 import styles from './filter.module.css';
 import { Input } from '@/components/input/input';
+import { log } from 'util';
+
+interface IFilterParameters {
+  title: string;
+  genre: string;
+  cinema: string;
+}
 
 const Filter = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams()!;
-  const [cinemaId, setCinemaId] = useState('');
-  const [filter, setFilter] = useState({ title: '', genre: '', cinema: '' });
+
+  const [filter, setFilter] = useState<IFilterParameters>({ title: '', genre: '', cinema: '' });
+
   useEffect(() => {
-    console.log({ cinemaId });
-  }, [cinemaId]);
-
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams]
-  );
-  /*useEffect(() => {
-    let query = '';
+    const params = new URLSearchParams(searchParams.toString());
     for (let [key, val] of Object.entries(filter)) {
+      params.delete(key);
       if (val.length > 0) {
-        console.log({ key, val });
-        query += createQueryString(key, val);
+        params.set(key, val);
       }
     }
-    if (query.length > 0) {
-      router.push(pathname + '?' + query);
-    }
-  }, [filter.title, filter.cinema, filter.genre, filter, createQueryString, router, pathname]);*/
+    router.push(pathname + '?' + params.toString());
+  }, [filter.title, filter.cinema, filter.genre, router, pathname]);
 
   const handleChange = (e: SyntheticEvent) => {
-    // const { value, name } = e.target as HTMLInputElement;
-    // setFilter({ ...filter, [name]: value });
+    const { value, name } = e.target as HTMLInputElement;
+    setFilter({ ...filter, [name]: value });
   };
 
   return (
     <div className={styles.filter}>
       <Input
-        name='name'
+        name='title'
         value={filter.title}
         type='text'
         label='Название'
@@ -61,6 +54,7 @@ const Filter = () => {
         label='Жанр'
         placeholder='Выберите жанр'
         onChange={handleChange}
+        onInput={handleChange}
       />
       <Input
         name='cinema'

@@ -13,8 +13,9 @@ import { useSearchParams } from 'next/navigation';
 // }> = ({ searchQueryString }) => {
 const Tickets: React.FC = () => {
   const s = useSearchParams();
+
   const cinemaId = s.get('cinema');
-  const name = s.get('name');
+  const name = s.get('title');
   const genre = s.get('genre');
 
   const [movies, setMovies] = useState<IMove[]>();
