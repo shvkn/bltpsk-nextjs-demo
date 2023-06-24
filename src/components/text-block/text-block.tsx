@@ -1,7 +1,7 @@
 'use client';
 
-import styles from './question.module.css';
-import React, { SyntheticEvent, useState } from 'react';
+import styles from './text-block.module.css';
+import React, { SyntheticEvent, useEffect, useLayoutEffect, useState } from 'react';
 import classNames from 'classnames';
 
 interface IQuestionProps {
@@ -9,7 +9,7 @@ interface IQuestionProps {
   answer: string;
 }
 
-export const Question: React.FC<IQuestionProps> = ({ question, answer }) => {
+export const TextBlock: React.FC<IQuestionProps> = ({ question, answer }) => {
   const [isOpened, setOpened] = useState(false);
 
   const toggleOpened = (e: SyntheticEvent) => {
