@@ -18,7 +18,7 @@ export default function CardPage() {
     return null;
   }
   return (
-    <main className={styles.container}>
+    <>
       <ul className={styles.tickets}>
         {Object.entries(cart).map(([id, count]) => (
           <li key={id}>
@@ -30,6 +30,6 @@ export default function CardPage() {
         <p className={styles.totalHeading}>Итого билетов:</p>
         <p className={styles.totalCount}>{totalCount}</p>
       </div>
-    </main>
+    </>
   );
 }

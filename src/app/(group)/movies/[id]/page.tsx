@@ -16,7 +16,7 @@ export default function MoviePage({ params }: { params: { id: string } }) {
     return <div>...Loading</div>;
   }
   return (
-    <main className={styles.main}>
+    <>
       <article className={styles.info}>
         <div className={styles.poster}>
           <Image src={movie.posterUrl} alt={movie.title} width={'400'} height={'500'} />
@@ -63,6 +63,6 @@ export default function MoviePage({ params }: { params: { id: string } }) {
           </li>
         ))}
       </ul>
-    </main>
+    </>
   );
 }

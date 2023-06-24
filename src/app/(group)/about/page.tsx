@@ -2,7 +2,7 @@ import styles from './page.module.css';
 
 export default function AboutPage() {
   return (
-    <main className={styles.container}>
+    <>
       <article className={styles.article}>
         <h2 className={styles.heading}>О нас</h2>
         <p className={styles.text}>
@@ -12,8 +12,7 @@ export default function AboutPage() {
         </p>
         <p className={styles.text}>
           был запущен в 2003 году. Портал предоставляет пользователям информацию о фильмах и их создателях, новости
-          кино,
-          интервью с актерами и другими знаменитостями, рецензии пользователей, расписание сеансов в кинотеатрах,
+          кино, интервью с актерами и другими знаменитостями, рецензии пользователей, расписание сеансов в кинотеатрах,
           ТВ-программу и другие разделы.
         </p>
         <p className={styles.text}>
@@ -21,7 +20,8 @@ export default function AboutPage() {
           являлась компания ООО «Билетопоиск», которой принадлежало 60 % акций проекта, 40 % акций принадлежало её
           совладельцу — французской компании ООО AlloCiné. 15 октября 2013 года сервис купила компания «Яндекс» (размер
           сделки — $80 млн, около 2,6 млрд рублей на то время).
-        </p></article>
-    </main>
+        </p>
+      </article>
+    </>
   );
 }

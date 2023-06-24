@@ -3,7 +3,7 @@ import { TextBlock } from '@/components/text-block/text-block';
 
 export default function QuestionsAndAnswersPage() {
   return (
-    <main className={styles.container}>
+    <>
       <h2 className={styles.heading}>Вопросы-ответы</h2>
       <ul className={styles.questions}>
         <li>
@@ -39,6 +39,6 @@ export default function QuestionsAndAnswersPage() {
           />
         </li>
       </ul>
-    </main>
+    </>
   );
 }
