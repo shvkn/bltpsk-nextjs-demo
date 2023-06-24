@@ -2,19 +2,20 @@ import React from 'react';
 import classNames from 'classnames';
 
 import styles from './footer.module.css';
+import Link from 'next/link';
 
 const Footer = () => (
   <footer className={styles.footer}>
     <ul className={styles.footerLinks}>
       <li>
-        <a href='#' className={classNames(styles.footerLink, 'hover')}>
+        <Link href='/qna' className={classNames(styles.footerLink, 'hover')}>
           Вопросы-ответы
-        </a>
+        </Link>
       </li>
       <li>
-        <a href='#' className={classNames(styles.footerLink, 'hover')}>
+        <Link href='/about' className={classNames(styles.footerLink, 'hover')}>
           О нас
-        </a>
+        </Link>
       </li>
     </ul>
   </footer>
