@@ -1,0 +1,43 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  max-height: 100vh;
+  padding: 24px;
+  box-shadow: 0 24px 32px rgb(0 0 0 / 4%), 0 16px 24px rgb(0 0 0 / 4%), 0 4px 8px rgb(0 0 0 / 4%), 0 0 1px rgb(0 0 0 / 4%);
+  box-sizing: border-box;
+  background-color: var(--color-white);
+  border-radius: 8px;
+  cursor: auto;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  /*width: 720px;*/
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-family: var(--font-roboto);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.message {
+  color: var(--color-text-primary);
+  font-family: var(--font-roboto);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.controls {
+  display: flex;
+  margin-top: 24px;
+  gap: 8px;
+}
