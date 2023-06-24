@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import { useGetMovieByIdQuery } from '@/services/movies-api';
 import { useAppDispatch } from '@/services/store';
 import { cartSliceActions } from '@/services/slices/cart';
+import Link from 'next/link';
 
 export interface ITicketCard {
   id: string;
@@ -32,9 +33,9 @@ const TicketCard: React.FC<ITicketCard> = ({ id, removeControl = false }) => {
         <Image src={movie.posterUrl} height={120} width={100} alt={movie.title} />
       </div>
       <div className={styles.content}>
-        <a href='#' className={classNames(styles.title, 'hover')}>
+        <Link href={`/movies/${movie.id}`} className={classNames(styles.title, 'hover')}>
           {movie.title}
-        </a>
+        </Link>
         <div className={styles.genre}>{movie.genre}</div>
       </div>
       <Counter id={movie.id} />
