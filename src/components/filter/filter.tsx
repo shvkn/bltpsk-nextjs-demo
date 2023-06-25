@@ -5,33 +5,31 @@ import React, { SyntheticEvent, useEffect, useState } from 'react';
 
 import { Input } from '@/components/input/input';
 import { Select } from '@/components/select/select';
-import { moviesSelector, selectCinemas } from '@/services/selectors/movies';
-import { useAppSelector } from '@/services/store';
+import { useGetCinemasQuery, useGetMoviesQuery } from '@/services/movies-api';
 import { Translations } from '@/shared/constants';
 
 import styles from './filter.module.css';
 
-export interface IFilterParameters {
+interface IFilterParameters {
   title: string;
   genre: string;
   cinema: string;
 }
 
-export const Filter = () => {
+export const Filter: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams()!;
-  const cinemas = useAppSelector(selectCinemas);
-  // TODO
-  const movies = useAppSelector(moviesSelector);
+  const { data: cinemas } = useGetCinemasQuery();
+  const { data: movies } = useGetMoviesQuery();
 
-  const genres = Array.from(new Set(movies.data?.map(({ genre }) => genre))).map((genre) => ({
+  const genresOptions = Array.from(new Set(movies?.map(({ genre }) => genre))).map((genre) => ({
     value: Translations.Genres[genre],
     id: genre,
   }));
 
   const cinemasOptions =
-    cinemas.data?.map((cinema) => ({
+    cinemas?.map((cinema) => ({
       id: cinema.id,
       value: cinema.name,
     })) || [];
@@ -70,7 +68,7 @@ export const Filter = () => {
         placeholder='Выберите жанр'
         onChange={handleChange}
         onInput={handleChange}
-        items={genres}
+        items={genresOptions}
       />
       <Select
         name='cinema'

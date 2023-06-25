@@ -3,32 +3,30 @@
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-import { TicketCard } from '@/components/ticket-card/ticket-card';
-import { useGetCinemasQuery, useGetMoviesQuery } from '@/services/movies-api';
+import { MemoizedTicketCard } from '@/components/ticket-card/ticket-card';
+import { useGetMoviesQuery } from '@/services/movies-api';
 
 import styles from './tickets.module.css';
 
 const Tickets: React.FC = () => {
-  useGetCinemasQuery();
   const searchParams = useSearchParams();
   const cinemaId = searchParams.get('cinema');
-  const name = searchParams.get('title');
+  const title = searchParams.get('title');
   const genre = searchParams.get('genre');
-  const [movies, setMovies] = useState<IMove[]>();
-
-  const { error, isLoading, data } = useGetMoviesQuery(cinemaId);
+  const [movies, setMovies] = useState<IMove[]>([]);
+  const { data, isLoading } = useGetMoviesQuery(cinemaId);
 
   useEffect(() => {
-    if (data) {
-      const arr = data
-        .filter((m) => (!!genre ? m.genre.toLowerCase() === genre : true))
-        .filter((m) => (!!name ? m.title.toLowerCase().includes(name.toLowerCase()) : true));
-
-      setMovies(arr);
+    if (data?.length) {
+      setMovies(
+        data
+          .filter((movie) => (!!genre ? movie.genre.toLowerCase() === genre : true))
+          .filter((movie) => (!!title ? movie.title.toLowerCase().includes(title.toLowerCase()) : true))
+      );
     }
-  }, [data, genre, name]);
+  }, [data, genre, title]);
 
-  if (isLoading || data?.length === 0) {
+  if (isLoading) {
     return null;
   }
 
@@ -37,7 +35,7 @@ const Tickets: React.FC = () => {
       {movies?.map((item) => {
         return (
           <li key={item.id}>
-            <TicketCard id={item.id} />
+            <MemoizedTicketCard data={item} />
           </li>
         );
       })}

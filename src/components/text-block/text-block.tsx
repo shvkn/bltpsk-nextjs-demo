@@ -5,12 +5,12 @@ import React, { SyntheticEvent, useState } from 'react';
 
 import styles from './text-block.module.css';
 
-interface IQuestionProps {
+interface ITextBlockProps {
   question: string;
   answer: string;
 }
 
-export const TextBlock: React.FC<IQuestionProps> = ({ question, answer }) => {
+export const TextBlock: React.FC<ITextBlockProps> = ({ question, answer }) => {
   const [isOpened, setOpened] = useState(false);
 
   const toggleOpened = (e: SyntheticEvent) => {

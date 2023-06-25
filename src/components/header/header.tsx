@@ -9,7 +9,7 @@ import { useAppSelector } from '@/services/store';
 
 import styles from './header.module.css';
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const totalCount = useAppSelector(selectTotalCount);
   return (
     <header className={styles.header}>

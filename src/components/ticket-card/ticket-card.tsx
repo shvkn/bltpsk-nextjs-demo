@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 
 import { Counter } from '@/components/counter/counter';
 import { Modal } from '@/components/modal/modal';
-import { useGetMovieByIdQuery } from '@/services/movies-api';
 import { cartSliceActions } from '@/services/slices/cart';
 import { useAppDispatch } from '@/services/store';
 import { Translations } from '@/shared/constants';
@@ -15,20 +14,16 @@ import { Translations } from '@/shared/constants';
 import styles from './ticket-card.module.css';
 
 export interface ITicketCardProps {
-  id: string;
+  data: IMove;
   removeControl?: boolean;
 }
 
-export const TicketCard: React.FC<ITicketCardProps> = ({ id, removeControl = false }) => {
-  const { error, isLoading, data: movie } = useGetMovieByIdQuery(id);
+export const TicketCard: React.FC<ITicketCardProps> = ({ data, removeControl = false }) => {
   const [isConfirmOpened, setConfirmOpened] = useState(false);
   const dispatch = useAppDispatch();
-  if (!movie) {
-    return null;
-  }
 
   const handleRemove = () => {
-    dispatch(cartSliceActions.remove(id));
+    dispatch(cartSliceActions.remove(data.id));
   };
 
   const handleClose = () => {
@@ -37,15 +32,15 @@ export const TicketCard: React.FC<ITicketCardProps> = ({ id, removeControl = fal
   return (
     <div className={styles.ticketCard}>
       <div className={styles.image}>
-        <Image src={movie.posterUrl} height={120} width={100} alt={movie.title} />
+        <Image src={data.posterUrl} height={120} width={100} alt={data.title} />
       </div>
       <div className={styles.content}>
-        <Link href={`/movies/${movie.id}`} className={classNames(styles.title, 'hover')}>
-          {movie.title}
+        <Link href={`/movies/${data.id}`} className={classNames(styles.title, 'hover')}>
+          {data.title}
         </Link>
-        <div className={styles.genre}>{Translations.Genres[movie.genre]}</div>
+        <div className={styles.genre}>{Translations.Genres[data.genre]}</div>
       </div>
-      <Counter id={movie.id} />
+      <Counter id={data.id} />
       {removeControl && (
         <button onClick={() => setConfirmOpened(true)} className={classNames(styles.removeButton, 'hover')}>
           <svg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
@@ -60,3 +55,5 @@ export const TicketCard: React.FC<ITicketCardProps> = ({ id, removeControl = fal
     </div>
   );
 };
+
+export const MemoizedTicketCard = React.memo(TicketCard);

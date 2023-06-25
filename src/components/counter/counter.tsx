@@ -5,7 +5,11 @@ import { useCounter } from '@/hooks/use-counter';
 
 import styles from './counter.module.css';
 
-export const Counter = ({ id }: { id: string }) => {
+interface ICounterProps {
+  id: string;
+}
+
+export const Counter: React.FC<ICounterProps> = ({ id }) => {
   const { count = 0, increment, decrement } = useCounter({ id });
   return (
     <div className={styles.controls}>

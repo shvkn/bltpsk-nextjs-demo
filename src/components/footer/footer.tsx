@@ -4,7 +4,7 @@ import React from 'react';
 
 import styles from './footer.module.css';
 
-export const Footer = () => (
+export const Footer: React.FC = () => (
   <footer className={styles.footer}>
     <ul className={styles.footerLinks}>
       <li>

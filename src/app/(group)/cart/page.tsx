@@ -3,28 +3,25 @@
 import { TicketCard } from '@/components/ticket-card/ticket-card';
 import { useGetMoviesQuery } from '@/services/movies-api';
 import { selectCardSlice, selectTotalCount } from '@/services/selectors/cart';
-import { moviesSelector } from '@/services/selectors/movies';
 import { useAppSelector } from '@/services/store';
 
 import styles from './page.module.css';
 
 export default function CardPage() {
-  useGetMoviesQuery();
-  const movies = useAppSelector(moviesSelector);
+  const { data, isLoading } = useGetMoviesQuery();
   const cart = useAppSelector(selectCardSlice).cart;
   const totalCount = useAppSelector(selectTotalCount);
-  const data = movies.data;
-  if (!data || !cart) {
-    return null;
-  }
   return (
     <>
       <ul className={styles.tickets}>
-        {Object.entries(cart).map(([id, count]) => (
-          <li key={id}>
-            <TicketCard id={id} removeControl={true} />
-          </li>
-        ))}
+        {Object.entries(cart).map(([id, count]) => {
+          const movie = data?.find((item) => item.id === id);
+          return movie ? (
+            <li key={id}>
+              <TicketCard data={movie} removeControl={true} />
+            </li>
+          ) : null;
+        })}
       </ul>
       <div className={styles.total}>
         <p className={styles.totalHeading}>Итого билетов:</p>
