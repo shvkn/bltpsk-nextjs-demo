@@ -4,8 +4,8 @@ import Image from 'next/image';
 import React from 'react';
 
 import Loading from '@/app/loading';
-import { Counter } from '@/components/counter/counter';
 import { Review } from '@/components/review/review';
+import { Counter } from '@/components/ui/counter/counter';
 import { useGetMovieByIdQuery, useGetReviewsByIdQuery } from '@/services/movies-api';
 import { Translations } from '@/shared/constants';
 import { capitalize } from '@/shared/utils';

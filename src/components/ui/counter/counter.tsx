@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import React from 'react';
 
+import { MinusIcon } from '@/components/ui/icons/minus-icon';
+import { PlusIcon } from '@/components/ui/icons/plus-icon';
 import { useCounter } from '@/hooks/use-counter';
 
 import styles from './counter.module.css';
-import { MinusIcon } from '@/components/ui/icons/minus-icon';
-import { PlusIcon } from '@/components/ui/icons/plus-icon';
 
 interface ICounterProps {
   id: string;

@@ -4,12 +4,12 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { SyntheticEvent, useEffect, useState } from 'react';
 
 import { Input } from '@/components/ui/input/input';
-import { Select } from '@/components/select/select';
+import { Select } from '@/components/ui/select/select';
 import { useGetCinemasQuery, useGetMoviesQuery } from '@/services/movies-api';
 import { Translations } from '@/shared/constants';
+import { capitalize } from '@/shared/utils';
 
 import styles from './filter.module.css';
-import { capitalize } from '@/shared/utils';
 
 interface IFilterParameters {
   title: string;

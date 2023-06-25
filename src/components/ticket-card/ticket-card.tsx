@@ -5,15 +5,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
-import { Counter } from '@/components/counter/counter';
-import { Modal } from '@/components/modal/modal';
+import { Counter } from '@/components/ui/counter/counter';
 import { CloseIcon } from '@/components/ui/icons/close-icon';
+import { Modal } from '@/components/ui/modal/modal';
 import { cartSliceActions } from '@/services/slices/cart';
 import { useAppDispatch } from '@/services/store';
 import { Translations } from '@/shared/constants';
+import { capitalize } from '@/shared/utils';
 
 import styles from './ticket-card.module.css';
-import { capitalize } from '@/shared/utils';
 
 export interface ITicketCardProps {
   data: IMove;
