@@ -1,8 +1,8 @@
 'use client';
 
+import classNames from 'classnames';
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import classNames from 'classnames';
 
 import styles from './select.module.css';
 

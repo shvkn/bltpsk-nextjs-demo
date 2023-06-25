@@ -2,13 +2,12 @@
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin: 0;
+  margin: 0 0 16px 0;
   list-style: none;
   gap: 16px;
 }
 
 .total {
-  justify-self: flex-end;
   display: flex;
   justify-content: space-between;
   align-items: center;

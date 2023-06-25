@@ -1,10 +1,11 @@
+import classNames from 'classnames';
 import React from 'react';
 
-import styles from './counter.module.css';
-import classNames from 'classnames';
 import { useCounter } from '@/hooks/use-counter';
 
-const Counter = ({ id }: { id: string }) => {
+import styles from './counter.module.css';
+
+export const Counter = ({ id }: { id: string }) => {
   const { count = 0, increment, decrement } = useCounter({ id });
   return (
     <div className={styles.controls}>
@@ -28,5 +29,3 @@ const Counter = ({ id }: { id: string }) => {
     </div>
   );
 };
-
-export default Counter;

@@ -1,12 +1,13 @@
-import React from 'react';
-import { Roboto } from 'next/font/google';
-
 import './globals.css';
-import { StoreProvider } from '@/services/store-provider';
-import Header from '@/components/header/header';
-import Footer from '@/components/footer/footer';
+
 import classNames from 'classnames';
+import { Roboto } from 'next/font/google';
 import localFont from 'next/font/local';
+import React from 'react';
+
+import { Footer } from '@/components/footer/footer';
+import { Header } from '@/components/header/header';
+import { StoreProvider } from '@/services/store-provider';
 
 const roboto = Roboto({
   subsets: ['latin', 'cyrillic'],

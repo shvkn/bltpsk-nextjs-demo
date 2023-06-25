@@ -1,15 +1,15 @@
 'use client';
 
-import React from 'react';
 import classNames from 'classnames';
-
-import styles from './header.module.css';
 import Link from 'next/link';
-import { useAppSelector } from '@/services/store';
+import React from 'react';
 
 import { selectTotalCount } from '@/services/selectors/cart';
+import { useAppSelector } from '@/services/store';
 
-const Header = () => {
+import styles from './header.module.css';
+
+export const Header = () => {
   const totalCount = useAppSelector(selectTotalCount);
   return (
     <header className={styles.header}>
@@ -30,5 +30,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

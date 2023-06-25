@@ -3,6 +3,7 @@ export const Translations: Record<string, Record<string, string>> = {
     horror: 'ужасы',
     comedy: 'комедия',
     action: 'боевик',
-    fantasy: 'фэнтази',
+    fantasy: 'фэнтези',
   },
 };
+export const MOVIE_API = 'http://localhost:3001/api/';

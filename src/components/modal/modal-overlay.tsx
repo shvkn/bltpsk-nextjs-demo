@@ -4,7 +4,7 @@ import styles from './modal-overlay.module.css';
 
 interface IModalOverlayProps {
   onClick: () => void;
-};
+}
 
 export const ModalOverlay: React.FC<IModalOverlayProps> = ({ onClick }) => {
   const handleClose = (e: React.SyntheticEvent) => {

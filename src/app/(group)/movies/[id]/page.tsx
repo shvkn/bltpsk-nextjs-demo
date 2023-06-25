@@ -1,10 +1,12 @@
 'use client';
 
-import styles from './page.module.css';
-import { useGetMovieByIdQuery, useGetReviewsByIdQuery } from '@/services/movies-api';
 import Image from 'next/image';
+
+import { Counter } from '@/components/counter/counter';
 import { Review } from '@/components/review/review';
-import Counter from '@/components/counter/counter';
+import { useGetMovieByIdQuery, useGetReviewsByIdQuery } from '@/services/movies-api';
+
+import styles from './page.module.css';
 
 export default function MoviePage({ params }: { params: { id: string } }) {
   const { error: movieError, isLoading: isMovieLoading, data: movie } = useGetMovieByIdQuery(params.id);

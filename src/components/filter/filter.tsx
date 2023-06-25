@@ -1,43 +1,40 @@
 'use client';
 
-import React, { SyntheticEvent, useCallback, useEffect, useState } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
 
-import styles from './filter.module.css';
 import { Input } from '@/components/input/input';
-import { log } from 'util';
 import { Select } from '@/components/select/select';
+import { moviesSelector, selectCinemas } from '@/services/selectors/movies';
 import { useAppSelector } from '@/services/store';
-import { selectCinemas } from '@/services/selectors/movies';
 import { Translations } from '@/shared/constants';
 
-interface IFilterParameters {
+import styles from './filter.module.css';
+
+export interface IFilterParameters {
   title: string;
   genre: string;
   cinema: string;
 }
 
-const genres = [
-  { value: Translations.Genres['comedy'], id: 'comedy' },
-  { value: Translations.Genres['horror'], id: 'horror' },
-  { value: Translations.Genres['action'], id: 'action' },
-  { value: Translations.Genres['fantasy'], id: 'fantasy' },
-];
-
-const Filter = () => {
+export const Filter = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams()!;
   const cinemas = useAppSelector(selectCinemas);
+  // TODO
+  const movies = useAppSelector(moviesSelector);
+
+  const genres = Array.from(new Set(movies.data?.map(({ genre }) => genre))).map((genre) => ({
+    value: Translations.Genres[genre],
+    id: genre,
+  }));
 
   const cinemasOptions =
-    cinemas.data?.map((cinema) => {
-      return {
-        id: cinema.id,
-        value: cinema.name,
-      };
-    }) || [];
+    cinemas.data?.map((cinema) => ({
+      id: cinema.id,
+      value: cinema.name,
+    })) || [];
 
   const [filter, setFilter] = useState<IFilterParameters>({ title: '', genre: '', cinema: '' });
 
@@ -86,5 +83,3 @@ const Filter = () => {
     </div>
   );
 };
-
-export default Filter;

@@ -1,6 +1,7 @@
-import React, { ButtonHTMLAttributes } from 'react';
-import styles from './button.module.css';
 import classNames from 'classnames';
+import React from 'react';
+
+import styles from './button.module.css';
 
 interface IButtonProps extends Omit<React.HTMLProps<HTMLButtonElement>, 'type'> {
   type: 'primary' | 'secondary';

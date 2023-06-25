@@ -1,6 +1,6 @@
 'use client';
 
-import React, { PropsWithChildren, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { PropsWithChildren, useLayoutEffect, useRef } from 'react';
 
 export const Sticky: React.FC<PropsWithChildren> = ({ children }) => {
   const ref = useRef<HTMLDivElement>(null);

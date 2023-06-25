@@ -1,10 +1,10 @@
-import React from 'react';
 import classNames from 'classnames';
+import Link from 'next/link';
+import React from 'react';
 
 import styles from './footer.module.css';
-import Link from 'next/link';
 
-const Footer = () => (
+export const Footer = () => (
   <footer className={styles.footer}>
     <ul className={styles.footerLinks}>
       <li>
@@ -20,5 +20,3 @@ const Footer = () => (
     </ul>
   </footer>
 );
-
-export default Footer;

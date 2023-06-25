@@ -1,24 +1,25 @@
 'use client';
 
-import React, { SyntheticEvent, useState } from 'react';
+import classNames from 'classnames';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useState } from 'react';
+
+import { Counter } from '@/components/counter/counter';
+import { Modal } from '@/components/modal/modal';
+import { useGetMovieByIdQuery } from '@/services/movies-api';
+import { cartSliceActions } from '@/services/slices/cart';
+import { useAppDispatch } from '@/services/store';
+import { Translations } from '@/shared/constants';
 
 import styles from './ticket-card.module.css';
-import Image from 'next/image';
-import Counter from '@/components/counter/counter';
-import classNames from 'classnames';
-import { useGetMovieByIdQuery } from '@/services/movies-api';
-import { useAppDispatch } from '@/services/store';
-import { cartSliceActions } from '@/services/slices/cart';
-import Link from 'next/link';
-import { Translations } from '@/shared/constants';
-import { Modal } from '@/components/modal/modal';
 
-export interface ITicketCard {
+export interface ITicketCardProps {
   id: string;
   removeControl?: boolean;
 }
 
-const TicketCard: React.FC<ITicketCard> = ({ id, removeControl = false }) => {
+export const TicketCard: React.FC<ITicketCardProps> = ({ id, removeControl = false }) => {
   const { error, isLoading, data: movie } = useGetMovieByIdQuery(id);
   const [isConfirmOpened, setConfirmOpened] = useState(false);
   const dispatch = useAppDispatch();
@@ -59,5 +60,3 @@ const TicketCard: React.FC<ITicketCard> = ({ id, removeControl = false }) => {
     </div>
   );
 };
-
-export default TicketCard;

@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-import cardSlice from '@/services/slices/cart';
-import { moviesApi } from '@/services/movies-api';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+
+import { moviesApi } from '@/services/movies-api';
+import cardSlice from '@/services/slices/cart';
 
 export const store = configureStore({
   reducer: {

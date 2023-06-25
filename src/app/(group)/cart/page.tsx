@@ -1,12 +1,12 @@
 'use client';
 
-import styles from './page.module.css';
-import { useSelector } from 'react-redux';
-import { moviesSelector } from '@/services/selectors/movies';
-import TicketCard from '@/components/ticket-card/ticket-card';
-import { useAppSelector } from '@/services/store';
-import { useGetMoviesByCinemaIdQuery, useGetMoviesQuery } from '@/services/movies-api';
+import { TicketCard } from '@/components/ticket-card/ticket-card';
+import { useGetMoviesQuery } from '@/services/movies-api';
 import { selectCardSlice, selectTotalCount } from '@/services/selectors/cart';
+import { moviesSelector } from '@/services/selectors/movies';
+import { useAppSelector } from '@/services/store';
+
+import styles from './page.module.css';
 
 export default function CardPage() {
   useGetMoviesQuery();

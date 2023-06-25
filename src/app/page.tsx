@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Tickets from '@/components/tickets/tickets';
-import Filter from '@/components/filter/filter';
+import { Filter } from '@/components/filter/filter';
 import { Sticky } from '@/components/sticky/sticky';
+import Tickets from '@/components/tickets/tickets';
 
 import styles from './page.module.css';
 

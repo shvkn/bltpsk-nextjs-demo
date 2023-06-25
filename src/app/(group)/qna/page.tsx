@@ -1,5 +1,6 @@
-import styles from './page.module.css';
 import { TextBlock } from '@/components/text-block/text-block';
+
+import styles from './page.module.css';
 
 export default function QuestionsAndAnswersPage() {
   return (

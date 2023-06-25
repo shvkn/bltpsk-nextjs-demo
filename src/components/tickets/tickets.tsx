@@ -1,23 +1,22 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-import TicketCard from '@/components/ticket-card/ticket-card';
-import { useGetCinemasQuery, useGetMoviesByCinemaIdQuery } from '@/services/movies-api';
+import { TicketCard } from '@/components/ticket-card/ticket-card';
+import { useGetCinemasQuery, useGetMoviesQuery } from '@/services/movies-api';
 
 import styles from './tickets.module.css';
-import { useSearchParams } from 'next/navigation';
 
 const Tickets: React.FC = () => {
-  const s = useSearchParams();
   useGetCinemasQuery();
-  const cinemaId = s.get('cinema');
-  const name = s.get('title');
-  const genre = s.get('genre');
-
+  const searchParams = useSearchParams();
+  const cinemaId = searchParams.get('cinema');
+  const name = searchParams.get('title');
+  const genre = searchParams.get('genre');
   const [movies, setMovies] = useState<IMove[]>();
 
-  const { error, isLoading, data } = useGetMoviesByCinemaIdQuery(cinemaId || '');
+  const { error, isLoading, data } = useGetMoviesQuery(cinemaId);
 
   useEffect(() => {
     if (data) {

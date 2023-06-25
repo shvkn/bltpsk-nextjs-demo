@@ -1,8 +1,9 @@
 'use client';
 
-import styles from './text-block.module.css';
-import React, { SyntheticEvent, useEffect, useLayoutEffect, useState } from 'react';
 import classNames from 'classnames';
+import React, { SyntheticEvent, useState } from 'react';
+
+import styles from './text-block.module.css';
 
 interface IQuestionProps {
   question: string;

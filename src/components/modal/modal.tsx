@@ -1,17 +1,17 @@
-'use client';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+
+import { Button } from '@/components/button/button';
 
 import styles from './modal.module.css';
-import React, { SyntheticEvent, useEffect, useState } from 'react';
-import { Button } from '@/components/button/button';
-import { createPortal } from 'react-dom';
 import { ModalOverlay } from './modal-overlay';
 
-interface IModal extends React.PropsWithChildren {
+interface IModalProps {
   handleClose: () => void;
   handleSubmit: () => void;
 }
 
-export const Modal: React.FC<IModal> = ({ children, handleSubmit, handleClose }) => {
+export const Modal: React.FC<IModalProps> = ({ handleSubmit, handleClose }) => {
   const [container, setContainer] = useState<Element>();
   useEffect(() => {
     const element = document.querySelector('#modal');
@@ -28,10 +28,6 @@ export const Modal: React.FC<IModal> = ({ children, handleSubmit, handleClose })
   if (!container) {
     return null;
   }
-
-  const onOk = (e: SyntheticEvent) => {
-    handleSubmit();
-  };
 
   return createPortal(
     <>

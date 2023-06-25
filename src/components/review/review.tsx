@@ -1,10 +1,11 @@
 import React from 'react';
+
 import styles from './review.module.css';
-import Image from 'next/image';
 
 interface IReviewProps {
   data: IReview;
 }
+
 export const Review: React.FC<IReviewProps> = ({ data }) => {
   return (
     <div className={styles.container}>

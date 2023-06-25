@@ -5,6 +5,7 @@
     "prettier"
   ],
   "plugins": [
+    "simple-import-sort",
     "prettier"
   ],
   "rules": {
@@ -15,6 +16,8 @@
         "jsxSingleQuote": true
       }
     ],
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   }
 }
