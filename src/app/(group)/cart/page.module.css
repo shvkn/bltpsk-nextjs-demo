@@ -32,3 +32,13 @@
   font-weight: 600;
   line-height: 20px;
 }
+
+.empty {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+  font-family: var(--font-roboto);
+  font-size: 32px;
+}
