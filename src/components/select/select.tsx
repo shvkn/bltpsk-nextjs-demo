@@ -1,5 +1,3 @@
-'use client';
-
 import classNames from 'classnames';
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -22,26 +20,25 @@ export const Select: React.FC<ISelectProps> = ({ label, name, extraClass, items,
 
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const optionsRef = useRef<HTMLDivElement>(null);
+  const ddListRef = useRef<HTMLUListElement>(null);
 
   const toggleDropDown = () => {
     setOpened((prev) => !prev);
   };
 
-  const handleClose = (e: SyntheticEvent) => {
-    setOpened(false);
-  };
-  // TODO Обработать клики не по списку
-  const handleOuterClick: EventListener = (e) => {
-    if (optionsRef.current?.contains(e.target as Node)) {
-      // toggleDropDown();
-      // console.log(e.target);
-    }
-  };
-
   useEffect(() => {
-    const handleScroll: EventListener = (e: Event) => {
+    const handleScroll: EventListener = () => {
       setOpened(false);
+    };
+    const handleOuterClick: EventListener = (e) => {
+      if (
+        ddListRef.current &&
+        !ddListRef.current.contains(e.target as Node) &&
+        toggleButtonRef.current &&
+        !toggleButtonRef.current.contains(e.target as Node)
+      ) {
+        setOpened(false);
+      }
     };
     if (document && window && inputRef.current) {
       const element = document.querySelector('#dropdown');
@@ -54,12 +51,12 @@ export const Select: React.FC<ISelectProps> = ({ label, name, extraClass, items,
         setContainer(element);
       }
       window.addEventListener('scroll', handleScroll);
-      window.addEventListener('click', handleOuterClick);
+      window.addEventListener('mousedown', handleOuterClick, false);
     }
     return () => {
       if (window) {
         window.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('click', handleOuterClick);
+        window.removeEventListener('mousedown', handleOuterClick, false);
       }
     };
   }, []);
@@ -77,13 +74,12 @@ export const Select: React.FC<ISelectProps> = ({ label, name, extraClass, items,
     }
     setOpened(false);
   };
-
   return (
     <div className={styles.container}>
       <label htmlFor={name} className={styles.label}>
         {label}
       </label>
-      <div className={styles.inputContainer} ref={optionsRef}>
+      <div className={styles.inputContainer}>
         <input
           {...rest}
           ref={inputRef}
@@ -102,6 +98,7 @@ export const Select: React.FC<ISelectProps> = ({ label, name, extraClass, items,
             <ul
               className={styles.ddList}
               style={{ top: position.top, left: position.left, width: `${position.width}px` }}
+              ref={ddListRef}
             >
               <li>
                 <button className={classNames(styles.ddListItem, 'hover')} onClick={handleSelect}></button>
