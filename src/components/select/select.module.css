@@ -36,8 +36,8 @@
   background: none;
   border: none;
   cursor: pointer;
+  color: var(--color-icon-gray);
 }
-
 
 .ddList {
   position: absolute;
@@ -53,16 +53,16 @@
 }
 
 .ddListItem {
+  width: 100%;
   padding: 12px;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--color-text-primary);
+  text-align: left;
   font-family: var(--font-sf-pro-text);
   font-size: 14px;
   line-height: 1.42;
-  width: 100%;
-  text-align: left;
 }
 
 .ddListItem:hover {
