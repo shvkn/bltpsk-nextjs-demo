@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Button } from '@/components/button/button';
+import { Button } from '@/components/ui/button/button';
 
 import styles from './modal.module.css';
 import { ModalOverlay } from './modal-overlay';

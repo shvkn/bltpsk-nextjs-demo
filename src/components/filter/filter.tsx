@@ -3,12 +3,13 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { SyntheticEvent, useEffect, useState } from 'react';
 
-import { Input } from '@/components/input/input';
+import { Input } from '@/components/ui/input/input';
 import { Select } from '@/components/select/select';
 import { useGetCinemasQuery, useGetMoviesQuery } from '@/services/movies-api';
 import { Translations } from '@/shared/constants';
 
 import styles from './filter.module.css';
+import { capitalize } from '@/shared/utils';
 
 interface IFilterParameters {
   title: string;
@@ -24,7 +25,7 @@ export const Filter: React.FC = () => {
   const { data: movies } = useGetMoviesQuery();
 
   const genresOptions = Array.from(new Set(movies?.map(({ genre }) => genre))).map((genre) => ({
-    value: Translations.Genres[genre],
+    value: capitalize(Translations.Genres[genre]),
     id: genre,
   }));
 

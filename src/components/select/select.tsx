@@ -101,7 +101,9 @@ export const Select: React.FC<ISelectProps> = ({ label, name, extraClass, items,
               ref={ddListRef}
             >
               <li>
-                <button className={classNames(styles.ddListItem, 'hover')} onClick={handleSelect}></button>
+                <button className={classNames(styles.ddListItem, 'hover')} onClick={handleSelect}>
+                  Не выбран
+                </button>
               </li>
               {items.map((item) => (
                 <li key={item.id}>

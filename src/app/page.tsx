@@ -1,12 +1,39 @@
-import React from 'react';
+'use client';
 
+import { useSearchParams } from 'next/navigation';
+import React, { Suspense, useEffect, useState } from 'react';
+
+import Loading from '@/app/loading';
 import { Filter } from '@/components/filter/filter';
 import { Sticky } from '@/components/sticky/sticky';
-import Tickets from '@/components/tickets/tickets';
+import { MemoizedTicketCard } from '@/components/ticket-card/ticket-card';
+import { Spinner } from '@/components/ui/spinner/spinner';
+import { useGetMoviesQuery } from '@/services/movies-api';
 
 import styles from './page.module.css';
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const cinemaId = searchParams.get('cinema');
+  const title = searchParams.get('title');
+  const genre = searchParams.get('genre');
+  const [movies, setMovies] = useState<IMove[]>([]);
+  const { data, isLoading } = useGetMoviesQuery(cinemaId);
+
+  useEffect(() => {
+    if (data?.length) {
+      setMovies(
+        data
+          .filter((movie) => (!!genre ? movie.genre.toLowerCase() === genre : true))
+          .filter((movie) => (!!title ? movie.title.toLowerCase().includes(title.toLowerCase()) : true))
+      );
+    }
+  }, [data, genre, title]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className={styles.root}>
       <main className={styles.mainContainer}>
@@ -16,7 +43,15 @@ export default function Home() {
           </Sticky>
         </aside>
         <div className={styles.main}>
-          <Tickets />
+          <Suspense fallback={<Spinner />}>
+            <ul className={styles.movies}>
+              {movies?.map((item) => (
+                <li key={item.id}>
+                  <MemoizedTicketCard data={item} />
+                </li>
+              ))}
+            </ul>
+          </Suspense>
         </div>
       </main>
     </div>
