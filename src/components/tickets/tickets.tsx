@@ -1,9 +1,11 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 
+import Loading from '@/app/loading';
 import { MemoizedTicketCard } from '@/components/ticket-card/ticket-card';
+import { Spinner } from '@/components/ui/spinner/spinner';
 import { useGetMoviesQuery } from '@/services/movies-api';
 
 import styles from './tickets.module.css';
@@ -27,19 +29,21 @@ const Tickets: React.FC = () => {
   }, [data, genre, title]);
 
   if (isLoading) {
-    return null;
+    return <Loading />;
   }
 
   return (
-    <ul className={styles.movies}>
-      {movies?.map((item) => {
-        return (
-          <li key={item.id}>
-            <MemoizedTicketCard data={item} />
-          </li>
-        );
-      })}
-    </ul>
+    <Suspense fallback={<Spinner />}>
+      <ul className={styles.movies}>
+        {movies?.map((item) => {
+          return (
+            <li key={item.id}>
+              <MemoizedTicketCard data={item} />
+            </li>
+          );
+        })}
+      </ul>
+    </Suspense>
   );
 };
 

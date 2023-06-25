@@ -1,24 +1,29 @@
 'use client';
 
 import Image from 'next/image';
+import React from 'react';
 
+import Loading from '@/app/loading';
 import { Counter } from '@/components/counter/counter';
 import { Review } from '@/components/review/review';
 import { useGetMovieByIdQuery, useGetReviewsByIdQuery } from '@/services/movies-api';
+import { Translations } from '@/shared/constants';
+import { capitalize } from '@/shared/utils';
 
 import styles from './page.module.css';
-import { capitalize } from '@/shared/utils';
-import { Translations } from '@/shared/constants';
 
 export default function MoviePage({ params }: { params: { id: string } }) {
-  const { error: movieError, isLoading: isMovieLoading, data: movie } = useGetMovieByIdQuery(params.id);
-  const { error: reviewsError, isLoading: isReviewsLoading, data: reviews } = useGetReviewsByIdQuery(params.id);
-  if (isReviewsLoading || !reviews) {
+  const { isLoading: isMovieLoading, data: movie } = useGetMovieByIdQuery(params.id);
+  const { isLoading: isReviewsLoading, data: reviews } = useGetReviewsByIdQuery(params.id);
+
+  if (isMovieLoading || isReviewsLoading) {
+    return <Loading />;
+  }
+
+  if (!movie) {
     return null;
   }
-  if (isMovieLoading || !movie) {
-    return <div>...Loading</div>;
-  }
+
   return (
     <>
       <article className={styles.info}>
@@ -61,7 +66,7 @@ export default function MoviePage({ params }: { params: { id: string } }) {
         </div>
       </article>
       <ul className={styles.reviews}>
-        {reviews.map((review) => (
+        {reviews?.map((review) => (
           <li key={review.id}>
             <Review data={review} />
           </li>
