@@ -20,6 +20,7 @@
 
 .button:disabled {
   background-color: var(--color-orange-disabled);
+  cursor: auto;
 }
 
 .count {
