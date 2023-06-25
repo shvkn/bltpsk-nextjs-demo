@@ -1,0 +1,44 @@
+.tickets {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0 0 16px 0;
+  list-style: none;
+  gap: 16px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  margin-top: auto;
+  background-color: var(--color-white);
+  border-radius: 8px;
+}
+
+.totalHeading {
+  color: var(--color-text-primary);
+  font-family: var(--font-roboto);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.totalCount {
+  color: var(--color-text-primary);
+  font-family: var(--font-roboto);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.empty {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+  font-family: var(--font-roboto);
+  font-size: 32px;
+}

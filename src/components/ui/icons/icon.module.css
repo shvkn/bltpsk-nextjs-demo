@@ -1,0 +1,19 @@
+.icon {
+  fill: currentColor;
+}
+
+.sizeS {
+  width: 12px;
+  height: 12px;
+}
+
+.sizeM {
+  width: 20px;
+  height: 20px;
+}
+
+.sizeL {
+  width: 32px;
+  height: 32px;
+}
+

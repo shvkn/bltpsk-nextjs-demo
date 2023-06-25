@@ -1,0 +1,47 @@
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  z-index: 3;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  background-color: var(--color-gray);
+}
+
+.heading {
+  color: var(--color-white);
+  font-family: var(--font-roboto);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.card {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cardCounter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  max-width: 28px;
+  min-height: 28px;
+  background: var(--color-orange);
+  border-radius: 4px;
+  color: var(--color-white);
+  font-family: var(--font-roboto);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.42;
+}
+
+.cardButton {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-white);
+}
