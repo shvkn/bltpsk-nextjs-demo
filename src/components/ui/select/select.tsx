@@ -72,14 +72,13 @@ export const Select: React.FC<ISelectProps> = ({ label, name, extraClass, items,
         target: { value: id, name: inputRef.current.name },
       } as React.ChangeEvent<HTMLInputElement>);
     }
-    setOpened(false);
   };
   return (
     <div className={styles.container}>
       <label htmlFor={name} className={styles.label}>
         {label}
       </label>
-      <div className={styles.inputContainer}>
+      <div className={styles.inputContainer} onClick={toggleDropDown}>
         <input
           {...rest}
           ref={inputRef}
@@ -88,7 +87,7 @@ export const Select: React.FC<ISelectProps> = ({ label, name, extraClass, items,
           name={name}
           className={classNames(styles.input, extraClass)}
         />
-        <button ref={toggleButtonRef} className={classNames(styles.ddButton, 'hover')} onClick={toggleDropDown}>
+        <button ref={toggleButtonRef} className={classNames(styles.ddButton, 'hover')}>
           {isOpened ? <ArrowUpIcon size='M' /> : <ArrowDownIcon size='M' />}
         </button>
 
