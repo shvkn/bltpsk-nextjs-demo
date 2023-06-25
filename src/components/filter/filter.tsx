@@ -53,31 +53,34 @@ export const Filter: React.FC = () => {
   };
 
   return (
-    <div className={styles.filter}>
-      <Input
-        name='title'
-        value={filter.title}
-        type='text'
-        label='Название'
-        placeholder='Введите название'
-        onChange={handleChange}
-      />
-      <Select
-        name='genre'
-        label='Жанр'
-        placeholder='Выберите жанр'
-        onChange={handleChange}
-        onInput={handleChange}
-        items={genresOptions}
-      />
-      <Select
-        name='cinema'
-        label='Кинотеатр'
-        placeholder='Выберите кинотеатр'
-        onChange={handleChange}
-        onInput={handleChange}
-        items={cinemasOptions}
-      />
-    </div>
+    <>
+      <p className={styles.heading}>Фильтр поиска</p>
+      <div className={styles.filter}>
+        <Input
+          name='title'
+          value={filter.title}
+          type='text'
+          label='Название'
+          placeholder='Введите название'
+          onChange={handleChange}
+        />
+        <Select
+          name='genre'
+          label='Жанр'
+          placeholder='Выберите жанр'
+          onChange={handleChange}
+          onInput={handleChange}
+          items={genresOptions}
+        />
+        <Select
+          name='cinema'
+          label='Кинотеатр'
+          placeholder='Выберите кинотеатр'
+          onChange={handleChange}
+          onInput={handleChange}
+          items={cinemasOptions}
+        />
+      </div>
+    </>
   );
 };

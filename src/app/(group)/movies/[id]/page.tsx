@@ -7,6 +7,8 @@ import { Review } from '@/components/review/review';
 import { useGetMovieByIdQuery, useGetReviewsByIdQuery } from '@/services/movies-api';
 
 import styles from './page.module.css';
+import { capitalize } from '@/shared/utils';
+import { Translations } from '@/shared/constants';
 
 export default function MoviePage({ params }: { params: { id: string } }) {
   const { error: movieError, isLoading: isMovieLoading, data: movie } = useGetMovieByIdQuery(params.id);
@@ -31,7 +33,7 @@ export default function MoviePage({ params }: { params: { id: string } }) {
           <li>
             <p className={styles.factItem}>
               <span className={styles.factType}>Жанр:</span>
-              {movie.genre}
+              {capitalize(Translations.Genres[movie.genre])}
             </p>
           </li>
           <li>

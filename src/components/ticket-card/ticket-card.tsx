@@ -13,6 +13,7 @@ import { useAppDispatch } from '@/services/store';
 import { Translations } from '@/shared/constants';
 
 import styles from './ticket-card.module.css';
+import { capitalize } from '@/shared/utils';
 
 export interface ITicketCardProps {
   data: IMove;
@@ -27,8 +28,14 @@ export const TicketCard: React.FC<ITicketCardProps> = ({ data, removeControl = f
     dispatch(cartSliceActions.remove(data.id));
   };
 
-  const handleClose = () => {
+  const handleCloseModal = () => {
     setConfirmOpened(false);
+    document.querySelector('body')?.classList.remove(styles.noScroll);
+  };
+
+  const handleOpenModal = () => {
+    setConfirmOpened(true);
+    document.querySelector('body')?.classList.add(styles.noScroll);
   };
 
   return (
@@ -40,15 +47,15 @@ export const TicketCard: React.FC<ITicketCardProps> = ({ data, removeControl = f
         <Link href={`/movies/${data.id}`} className={classNames(styles.title, 'hover')}>
           {data.title}
         </Link>
-        <div className={styles.genre}>{Translations.Genres[data.genre]}</div>
+        <div className={styles.genre}>{capitalize(Translations.Genres[data.genre])}</div>
       </div>
       <Counter id={data.id} />
       {removeControl && (
-        <button onClick={() => setConfirmOpened(true)} className={classNames(styles.removeButton, 'hover')}>
-          <CloseIcon size='S' />
+        <button onClick={handleOpenModal} className={classNames(styles.removeButton, 'hover')}>
+          <CloseIcon size='M' />
         </button>
       )}
-      {isConfirmOpened && <Modal handleClose={handleClose} handleSubmit={handleRemove} />}
+      {isConfirmOpened && <Modal handleClose={handleCloseModal} handleSubmit={handleRemove} />}
     </div>
   );
 };

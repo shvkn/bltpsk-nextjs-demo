@@ -49,7 +49,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' className={classNames(roboto.variable, sfProText.variable)}>
-      <body className={'ololo'}>
+      <body>
         <StoreProvider>
           <Header />
           {children}
