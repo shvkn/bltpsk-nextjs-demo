@@ -1,13 +1,12 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Loading from '@/app/loading';
 import { Filter } from '@/components/filter/filter';
 import { Sticky } from '@/components/sticky/sticky';
 import { MemoizedTicketCard } from '@/components/ticket-card/ticket-card';
-import { Spinner } from '@/components/ui/spinner/spinner';
 import { useGetMoviesQuery } from '@/services/movies-api';
 
 import styles from './page.module.css';
@@ -43,15 +42,13 @@ export default function Home() {
           </Sticky>
         </aside>
         <div className={styles.main}>
-          <Suspense fallback={<Spinner />}>
-            <ul className={styles.movies}>
-              {movies?.map((item) => (
-                <li key={item.id}>
-                  <MemoizedTicketCard data={item} />
-                </li>
-              ))}
-            </ul>
-          </Suspense>
+          <ul className={styles.movies}>
+            {movies?.map((item) => (
+              <li key={item.id}>
+                <MemoizedTicketCard data={item} />
+              </li>
+            ))}
+          </ul>
         </div>
       </main>
     </div>

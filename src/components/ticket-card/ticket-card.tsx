@@ -24,10 +24,6 @@ export const TicketCard: React.FC<ITicketCardProps> = ({ data, removeControl = f
   const [isConfirmOpened, setConfirmOpened] = useState(false);
   const dispatch = useAppDispatch();
 
-  const handleRemove = () => {
-    dispatch(cartSliceActions.remove(data.id));
-  };
-
   const handleCloseModal = () => {
     setConfirmOpened(false);
     document.querySelector('body')?.classList.remove(styles.noScroll);
@@ -36,6 +32,11 @@ export const TicketCard: React.FC<ITicketCardProps> = ({ data, removeControl = f
   const handleOpenModal = () => {
     setConfirmOpened(true);
     document.querySelector('body')?.classList.add(styles.noScroll);
+  };
+
+  const handleRemove = () => {
+    dispatch(cartSliceActions.remove(data.id));
+    handleCloseModal();
   };
 
   return (
