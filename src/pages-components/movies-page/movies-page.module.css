@@ -24,12 +24,4 @@
   border-radius: 8px;
 }
 
-.movies {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  gap: 16px;
-}
 

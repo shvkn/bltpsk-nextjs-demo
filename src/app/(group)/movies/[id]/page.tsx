@@ -9,7 +9,6 @@ import { Counter } from '@/components/ui/counter/counter';
 import { useGetMovieByIdQuery } from '@/services/api/movies-api';
 import { useGetReviewsByIdQuery } from '@/services/api/reviews-api';
 import { Translations } from '@/shared/constants';
-import { capitalize } from '@/shared/utils';
 
 import styles from './page.module.css';
 
