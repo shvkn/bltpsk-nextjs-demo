@@ -2,7 +2,7 @@ import { TextBlock } from '@/components/text-block/text-block';
 
 import styles from './page.module.css';
 
-export default function QuestionsAndAnswersPage() {
+export default function FAQPage() {
   return (
     <>
       <h2 className={styles.heading}>Вопросы-ответы</h2>

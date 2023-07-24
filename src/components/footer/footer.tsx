@@ -8,7 +8,7 @@ export const Footer: React.FC = () => (
   <footer className={styles.footer}>
     <ul className={styles.footerLinks}>
       <li>
-        <Link href='/qna' className={classNames(styles.footerLink, 'hover')}>
+        <Link href='/faq' className={classNames(styles.footerLink, 'hover')}>
           Вопросы-ответы
         </Link>
       </li>
