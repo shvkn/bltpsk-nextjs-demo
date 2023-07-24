@@ -12,13 +12,10 @@ export const moviesApi = createApi({
     getMovieById: builder.query<IMove, string>({
       query: (id: string) => `movie?movieId=${id}`,
     }),
-    getReviewsById: builder.query<IReview[], string>({
-      query: (id: string) => `reviews?movieId=${id}`,
-    }),
     getCinemas: builder.query<ICinema[], void>({
       query: () => 'cinemas',
     }),
   }),
 });
 
-export const { useGetCinemasQuery, useGetMoviesQuery, useGetMovieByIdQuery, useGetReviewsByIdQuery } = moviesApi;
+export const { useGetCinemasQuery, useGetMoviesQuery, useGetMovieByIdQuery } = moviesApi;
