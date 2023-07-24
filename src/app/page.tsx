@@ -7,7 +7,7 @@ import Loading from '@/app/loading';
 import { Filter } from '@/components/filter/filter';
 import { Sticky } from '@/components/sticky/sticky';
 import { MemoizedTicketCard } from '@/components/ticket-card/ticket-card';
-import { useGetMoviesQuery } from '@/services/movies-api';
+import { useGetMoviesQuery } from '@/services/api/movies-api';
 
 import styles from './page.module.css';
 

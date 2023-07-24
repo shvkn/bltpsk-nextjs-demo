@@ -6,8 +6,8 @@ import React from 'react';
 import Loading from '@/app/loading';
 import { Review } from '@/components/review/review';
 import { Counter } from '@/components/ui/counter/counter';
+import { useGetMovieByIdQuery } from '@/services/api/movies-api';
 import { useGetReviewsByIdQuery } from '@/services/api/reviews-api';
-import { useGetMovieByIdQuery } from '@/services/movies-api';
 import { Translations } from '@/shared/constants';
 import { capitalize } from '@/shared/utils';
 
@@ -39,7 +39,8 @@ export default function MoviePage({ params }: { params: { id: string } }) {
           <li>
             <p className={styles.factItem}>
               <span className={styles.factType}>Жанр:</span>
-              {capitalize(Translations.Genres[movie.genre])}
+              {Translations.Genres[movie.genre]}
+              {/*{capitalize(Translations.Genres[movie.genre])}*/}
             </p>
           </li>
           <li>

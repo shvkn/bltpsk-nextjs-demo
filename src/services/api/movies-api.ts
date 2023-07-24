@@ -6,11 +6,21 @@ export const moviesApi = createApi({
   reducerPath: 'moviesApi',
   baseQuery: fetchBaseQuery({ baseUrl: MOVIE_API }),
   endpoints: (builder) => ({
-    getMovies: builder.query<IMove[], string | null | void>({
-      query: (id) => (typeof id === 'string' && id.length > 0 ? `movies?cinemaId=${id}` : 'movies'),
+    getMovies: builder.query<IMove[], string | void>({
+      query: (cinemaId) => ({
+        url: 'movies',
+        params: {
+          cinemaId,
+        },
+      }),
     }),
     getMovieById: builder.query<IMove, string>({
-      query: (id: string) => `movie?movieId=${id}`,
+      query: (movieId) => ({
+        url: 'movie',
+        params: {
+          movieId,
+        },
+      }),
     }),
   }),
 });

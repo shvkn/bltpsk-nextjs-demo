@@ -2,8 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import { cinemasApi } from '@/services/api/cinemas-api';
+import { moviesApi } from '@/services/api/movies-api';
 import { reviewsApi } from '@/services/api/reviews-api';
-import { moviesApi } from '@/services/movies-api';
 import cardSlice from '@/services/slices/cart';
 
 export const store = configureStore({

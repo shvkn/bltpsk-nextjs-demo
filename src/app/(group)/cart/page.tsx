@@ -4,7 +4,7 @@ import React from 'react';
 
 import Loading from '@/app/loading';
 import { TicketCard } from '@/components/ticket-card/ticket-card';
-import { useGetMoviesQuery } from '@/services/movies-api';
+import { useGetMoviesQuery } from '@/services/api/movies-api';
 import { selectCardSlice, selectTotalCount } from '@/services/selectors/cart';
 import { useAppSelector } from '@/services/store';
 

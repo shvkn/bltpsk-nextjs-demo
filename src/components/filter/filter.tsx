@@ -6,7 +6,7 @@ import React, { SyntheticEvent, useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input/input';
 import { Select } from '@/components/ui/select/select';
 import { useGetCinemasQuery } from '@/services/api/cinemas-api';
-import { useGetMoviesQuery } from '@/services/movies-api';
+import { useGetMoviesQuery } from '@/services/api/movies-api';
 import { Translations } from '@/shared/constants';
 import { capitalize } from '@/shared/utils';
 
