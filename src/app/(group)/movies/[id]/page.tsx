@@ -6,8 +6,8 @@ import React from 'react';
 import Loading from '@/app/loading';
 import { Review } from '@/components/review/review';
 import { Counter } from '@/components/ui/counter/counter';
-import { useGetMovieByIdQuery } from '@/services/movies-api';
 import { useGetReviewsByIdQuery } from '@/services/api/reviews-api';
+import { useGetMovieByIdQuery } from '@/services/movies-api';
 import { Translations } from '@/shared/constants';
 import { capitalize } from '@/shared/utils';
 
