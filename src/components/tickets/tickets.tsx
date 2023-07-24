@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { TicketCard } from '@/components/ticket-card/ticket-card';
 import styles from '@/pages-components/cart-page/cart-page.module.css';
 
