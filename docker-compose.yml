@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  api:
+    build: ./backend
+    container_name: bltpsk-simple-api
+    ports:
+      - 3001:3001
+  app:
+    build: .
+    container_name: nltpsk-nextjs-app
+    ports:
+      - 3000:3000
