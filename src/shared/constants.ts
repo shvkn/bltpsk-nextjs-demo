@@ -6,4 +6,5 @@ export const Translations: Record<string, Record<string, string>> = {
     fantasy: 'фэнтези',
   },
 };
-export const MOVIE_API = 'http://localhost:3001/api/';
+export const MOVIE_API = process.env.NEXT_PUBLIC_API_BASE_URL;
+console.dir(process.env);

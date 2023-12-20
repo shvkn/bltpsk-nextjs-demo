@@ -10,6 +10,6 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(bodyParser.json());
-app.use('/api', api);
+app.use(api);
 
 app.listen(port, () => console.log('Listening at http://localhost:' + port));

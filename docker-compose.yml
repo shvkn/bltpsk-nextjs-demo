@@ -6,7 +6,10 @@ services:
     ports:
       - 3001:3001
   app:
-    build: .
+    build:
+      context: .
+      args:
+        - API_BASE_URL=${API_BASE_URL:-http://localhost:3001/}
     container_name: nltpsk-nextjs-app
     ports:
       - 3000:3000

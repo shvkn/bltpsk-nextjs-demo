@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  api:
+    image: shvkn/bltpsk-backend:latest
+    container_name: bltpsk-simple-api
+    ports:
+      - ${BLTPSK_API_HOST_PORT}:3001
+  app:
+    image: shvkn/bltpsk-backend:latest
+    container_name: nltpsk-nextjs-app
+    ports:
+      - ${BLTPSK_NEXT_HOST_PORT}:3000
